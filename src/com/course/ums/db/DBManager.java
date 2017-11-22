@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class DBManager {
 
-    private static final String DB_URL = "jdbc:mysql://trainer:trainer@localhost/ums?useLegacyDatetimeCode=false";
+    private static final String DB_URL = "jdbc:mysql://root@localhost/ums?useLegacyDatetimeCode=false";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL);

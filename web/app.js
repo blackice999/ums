@@ -1,7 +1,8 @@
 var App = App || {};
 
 App.constants = {
-	basePath: 'http://localhost:8080/'
+	basePathJava: 'http://localhost:8080/',
+	basePathWeb: 'http://localhost:63343/'
 }
 
 App.utils = App.utils || {};
@@ -67,5 +68,28 @@ App.utils.createGrid = function(config) {
 			console.log(e)
 		}
 	})
-
 };
+
+function getSearchParameters() {
+          var prmstr = window.location.search.substr(1);
+          return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+    }
+
+    function transformToAssocArray( prmstr ) {
+        var params = {};
+        var prmarr = prmstr.split("&");
+        for ( var i = 0; i < prmarr.length; i++) {
+            var tmparr = prmarr[i].split("=");
+            params[tmparr[0]] = tmparr[1];
+        }
+        return params;
+    }
+
+   function traverse(o ) {
+       for (i in o) {
+           if (!!o[i] && typeof(o[i])=="object") {
+               console.log(i, o[i])
+               traverse(o[i] );
+           }
+       }
+   }

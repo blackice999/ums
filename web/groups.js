@@ -1,19 +1,18 @@
 $(document).ready(function () {
-    $('#loginForm').on('submit',function (event) {
+    $('#studentsBtn').on('click',function (event) {
         event.preventDefault();
 
         var payload = {
-            email: $('#email').val(),
-            password: $('#password').val()
+            token: getSearchParameters().token,
         };
 
         jQuery.ajax({
             method: "POST",
             data: JSON.stringify(payload),
-            url: App.constants.basePathJava + 'user/authenticate',
+            url: App.constants.basePathJava + 'group/list',
             success: function(resp) {
-                console.log(resp);
-                window.location = App.constants.basePathWeb + "ums/web/members.html?token=" + resp.token;
+
+             traverse(resp);
             },
             error: function(e) {
                 console.log(e)
