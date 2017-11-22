@@ -3,8 +3,6 @@ package com.course.ums.ws;
 import com.course.ums.db.DBManager;
 import org.json.JSONObject;
 
-import java.util.Set;
-
 /**
  * Created by vh on 11/16/17.
  */

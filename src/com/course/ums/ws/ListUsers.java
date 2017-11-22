@@ -3,8 +3,6 @@ package com.course.ums.ws;
 import com.course.ums.db.DBManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import spark.Request;
-import spark.Response;
 
 import java.sql.ResultSet;
 import java.sql.Statement;

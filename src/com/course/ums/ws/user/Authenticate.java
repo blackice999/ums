@@ -5,8 +5,6 @@ import com.course.ums.db.DBManager;
 import com.course.ums.ws.JSONRoute;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import spark.Request;
-import spark.Response;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
