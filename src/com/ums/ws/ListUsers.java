@@ -1,6 +1,6 @@
-package com.ums.ws;
+package com.course.ums.ws;
 
-import com.ums.db.DBManager;
+import com.course.ums.db.DBManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import spark.Request;
@@ -10,16 +10,18 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 /**
- * Created by W7 on 06.11.2017.
+ * Created by vh on 11/2/17.
  */
-public class ListUsers extends MyRoute {
+public class ListUsers extends JSONRoute {
 
     @Override
-    public Object myHandle(Request request, Response response) throws Exception {
+    public JSONObject handleJSONRequest(JSONObject request) throws Exception {
         Statement statement = DBManager.getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
 
+        JSONObject result = new JSONObject();
         JSONArray users = new JSONArray();
+        result.put("users", users);
         while (resultSet.next()) {
             JSONObject user = new JSONObject();
 
@@ -32,6 +34,6 @@ public class ListUsers extends MyRoute {
             users.put(user);
         }
 
-        return users;
+        return result;
     }
 }

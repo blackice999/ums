@@ -1,26 +1,22 @@
-package com.ums.ws;
+package com.course.ums.ws;
 
-import com.ums.db.DBManager;
+import com.course.ums.db.DBManager;
 import org.json.JSONObject;
-import spark.Request;
-import spark.Response;
 
 import java.sql.PreparedStatement;
 
 /**
- * Created by W7 on 06.11.2017.
+ * Created by vh on 11/2/17.
  */
-public class AddUser extends MyRoute {
+public class AddUser extends JSONRoute {
 
     @Override
-    public Object myHandle(Request request, Response response) throws Exception {
-        JSONObject json = new JSONObject(request.body());
-
+    public JSONObject handleJSONRequest(JSONObject request) throws Exception {
         PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement("INSERT INTO users(first_name, last_name, email, password) VALUES(?, ?, ?, ?)");
-        preparedStatement.setString(1, json.getString("first_name"));
-        preparedStatement.setString(2, json.getString("last_name"));
-        preparedStatement.setString(3, json.getString("email"));
-        preparedStatement.setString(4, json.getString("password"));
+        preparedStatement.setString(1, request.getString("first_name"));
+        preparedStatement.setString(2, request.getString("last_name"));
+        preparedStatement.setString(3, request.getString("email"));
+        preparedStatement.setString(4, request.getString("password"));
         preparedStatement.execute();
 
         JSONObject result = new JSONObject();
